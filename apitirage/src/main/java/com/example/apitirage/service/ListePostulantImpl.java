@@ -2,6 +2,7 @@ package com.example.apitirage.service;
 
 import com.example.apitirage.modele.ListePostulant;
 import com.example.apitirage.modele.Postulant;
+import com.example.apitirage.modele.Tirage;
 import com.example.apitirage.repository.RepoListePostulant;
 import com.example.apitirage.repository.RepoPostulant;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.CellType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,44 +26,16 @@ import java.util.List;
 @Service
 public class ListePostulantImpl implements ListePostulantService {
 
-    private final RepoPostulant repoPostulant;
+    private final RepoListePostulant repoListePostulant;
+
     @Override
-    public void importerFichier(Postulant postulant) {
+    public ListePostulant CreerListe(ListePostulant listePostulant) {
 
-        ArrayList<String> values = new ArrayList<String>();
-
-        try {
-
-            InputStream input = new FileInputStream("Classeur1.xls");
-            POIFSFileSystem fs = new POIFSFileSystem(input);
-            HSSFWorkbook wb = new HSSFWorkbook(fs);
-            HSSFSheet sheet = wb.getSheetAt(0);
-            Iterator rows = sheet.rowIterator();
-
-            while (rows.hasNext()){
-                values.clear();
-                HSSFRow row = (HSSFRow) rows.next();
-                Iterator cells = row.cellIterator();
-                while (cells.hasNext()){
-
-                    HSSFCell cell = (HSSFCell) cells.next();
-
-                    if( cell.getCellType() == CellType.NUMERIC)
-                        values.add(Integer.toString((int) cell.getNumericCellValue()));
-                    else if (CellType.STRING == cell.getCellType())
-                    values.add(cell.getStringCellValue());
-                }
-
-                repoPostulant.InsertPostulant(values.get(0), values.get(1), values.get(2), values.get(3));
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return repoListePostulant.save(listePostulant);
     }
 
     @Override
-    public List<Postulant> Lire() {
-        return repoPostulant.findAll();
+    public ListePostulant trouverListeParLibelle(String libelle) {
+        return repoListePostulant.findByLibelle(libelle);
     }
 }

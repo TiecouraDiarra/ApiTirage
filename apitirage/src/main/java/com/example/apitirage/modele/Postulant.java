@@ -21,4 +21,8 @@ public class Postulant {
     private String prenomPostulant;
     private String numeroPostulant;
     private String emailPostulant;
+
+    @ManyToOne
+    @JoinColumn(name = "id_liste_postulant")
+    private ListePostulant idlistePostulant;
 }

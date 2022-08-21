@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -18,6 +19,10 @@ public class Tirage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTirage;
-    private Long dateTirage;
-    private String libelleTirage;
+    private Date dateTirage;
+    private String libelle;
+
+    @ManyToOne
+    @JoinColumn(name = "id_liste_postulant")
+    private ListePostulant listePostulant;
 }
