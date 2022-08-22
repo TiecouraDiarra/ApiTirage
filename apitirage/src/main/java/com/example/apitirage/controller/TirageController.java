@@ -32,25 +32,22 @@ public class TirageController {
 
     @PostMapping("/createTirage/{libelle}/{nombre}")
     public String create(@RequestBody Tirage tirage, @PathVariable String libelle, @PathVariable Long nombre, ListePostulant listeP){
-        ListePostulant liste = listePostulantService.trouverListeParLibelle(libelle);
-        List<Postulant> postulant = postulantService.TrouveridPostList(liste.getIdListePostulant());
 
-        List<Postulant> lp = TService.CreerTirage(tirage, postulant, nombre);
-        Long idTirage = TService.trouverTirageParlibelle(tirage.getLibelle()).getIdTirage();
-        //Long idTirage = TService.trouverTirageParle(tirage.getIdTirage()).get();
-        //ListePostulant l = listePostulantService.CreerListe(listeP);
+        if (TService.trouverTirageParlibelle(tirage.getLibelle())==null){
+            ListePostulant liste = listePostulantService.trouverListeParLibelle(libelle);
+            List<Postulant> postulant = postulantService.TrouveridPostList(liste.getIdListePostulant());
 
-        for (Postulant p : lp){
+            List<Postulant> lp = TService.CreerTirage(tirage, postulant, nombre);
+            Long idTirage = TService.trouverTirageParlibelle(tirage.getLibelle()).getIdTirage();
 
-            //postulantService.creerPostulant(p);
-            postulantTireService.creer(p.getIdPostulant(),p.getNomPostulant(),p.getPrenomPostulant(),p.getNumeroPostulant(),p.getEmailPostulant(),idTirage);
-
+            for (Postulant p : lp){
+                postulantTireService.creer(p.getIdPostulant(),p.getNomPostulant(),p.getPrenomPostulant(),p.getNumeroPostulant(),p.getEmailPostulant(),idTirage);
+            }
+            return "Fichier importé avec succès";
+        }else {
+            return "Ce tirage existe déja.";
         }
-        /*for (Tirage T : lp){
-            T.setIdlistePostulant(l);
-            TService.CreerTirageA(p);
-        }*/
-        return "succes";
+
     }
 
     @PutMapping("/modifier/{idTirage}")

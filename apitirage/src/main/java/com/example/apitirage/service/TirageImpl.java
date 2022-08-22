@@ -40,6 +40,11 @@ public class TirageImpl implements TirageService{
         return repotirage.findByLibelle(libelle);
     }
 
+    /*@Override
+    public Tirage trouverTirageParnombre(Long nombre) {
+        return repotirage.findByNombre(nombre);
+    }*/
+
     @Override
     public Tirage modifierTirage(Long idTirage, Tirage tirage) {
         return repotirage.findById(idTirage)

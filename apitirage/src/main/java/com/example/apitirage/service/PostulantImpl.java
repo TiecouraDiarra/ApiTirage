@@ -29,7 +29,7 @@ public class PostulantImpl implements PostulantService{
     public ArrayList<Postulant> importerFichier(MultipartFile file) {
 
         DataFormatter formatter=new DataFormatter();
-        ArrayList<Postulant> values = new ArrayList<Postulant>(); // Variable permettant de prendre toutes les donnes du tableau
+        ArrayList<Postulant> values = new ArrayList<Postulant>(); // Variable permettant de prendre toutes les donnees du tableau
 
         // Bloque permettant de lever les exception lors de l'importation du fichier excel
         try{
@@ -50,7 +50,7 @@ public class PostulantImpl implements PostulantService{
 
                 HSSFRow row = (HSSFRow) rows.next(); // Recuperation d'une ligne du tableau
 
-                Iterator cells = row.cellIterator(); // Recuperation de toutes toutes les colonnes de chaque ligne
+                Iterator cells = row.cellIterator(); // Recuperation de toutes les colonnes de chaque ligne
                 Postulant p=new Postulant();
                 int numColun=0;
                 // Boucle permettant de parcourut toutes les colonnes de chaque ligne

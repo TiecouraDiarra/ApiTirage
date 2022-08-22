@@ -14,5 +14,7 @@ public interface TirageService {
 
   Tirage trouverTirageParlibelle(String libelle);
 
+  //Tirage trouverTirageParnombre(Long nombre);
+
     Tirage modifierTirage(Long idTirage, Tirage tirage);
 }

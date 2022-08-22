@@ -27,18 +27,24 @@ public class PostulantController {
     @PostMapping("/importer/{libelle}")
     public String LireFichier(@Param("file")MultipartFile file, ListePostulant liste, String libelle){
 
-        ArrayList<Postulant> importer = postulantService.importerFichier(file);
-        liste.setDateListePostulant(new Date());
-        ListePostulant l = listePostulantService.CreerListe(liste);
+        if(listePostulantService.trouverListeParLibelle(liste.getLibelle())==null){
+            ArrayList<Postulant> importer = postulantService.importerFichier(file);
+            liste.setDateListePostulant(new Date());
+            ListePostulant l = listePostulantService.CreerListe(liste);
 
-        for (Postulant p: importer)
-        {
-            p.setIdlistePostulant(l);
-            postulantService.creerPostulant(p);
+            for (Postulant p: importer)
+            {
+                p.setIdlistePostulant(l);
+                postulantService.creerPostulant(p);
+            }
+            postulantService.importerFichier(file);
+            postulantService.AfficherTousLesPostulants();
+            return "Fichier importé";
+        }else {
+            return "Cette liste existe déja.";
         }
-        postulantService.importerFichier(file);
-        postulantService.AfficherTousLesPostulants();
-        return "Fichier importé";
+
+
     }
 
     @GetMapping("/AfficherTousPost")
