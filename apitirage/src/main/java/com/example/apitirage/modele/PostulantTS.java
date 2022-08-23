@@ -15,7 +15,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class PostulantTS {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Long idPostulant;
     private String nomPostulant;
     private String prenomPostulant;

@@ -49,6 +49,7 @@ public class PostulantController {
 
     @GetMapping("/AfficherTousPost")
     public Iterable<Object[]> getPostulants(){
+
         return postulantService.AfficherTousLesPostulants();
     }
 }

@@ -43,7 +43,7 @@ public class TirageController {
             for (Postulant p : lp){
                 postulantTireService.creer(p.getIdPostulant(),p.getNomPostulant(),p.getPrenomPostulant(),p.getNumeroPostulant(),p.getEmailPostulant(),idTirage);
             }
-            return "Fichier importé avec succès";
+            return "Tirage effectué avec succès";
         }else {
             return "Ce tirage existe déja.";
         }
