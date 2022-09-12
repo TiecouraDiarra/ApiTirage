@@ -107,8 +107,8 @@ public class PostulantImpl implements PostulantService{
     }
 
     @Override
-    public Iterable<Object[]> AfficherTousLesPostulants() {
-        return  postulantRepository.AfficherTousLesPostulants();
+    public List<Postulant> AfficherTousLesPostulants() {
+        return  postulantRepository.findAll();
     }
 
     @Override

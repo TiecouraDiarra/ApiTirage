@@ -5,6 +5,7 @@ import com.example.apitirage.modele.Tirage;
 import com.example.apitirage.repository.RepoPostulant;
 import com.example.apitirage.repository.RepoTirage;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -16,12 +17,15 @@ import java.util.Random;
 @Service
 public class TirageImpl implements TirageService{
 
+    @Autowired
+    //================LA DEPENDANCE DU REPOSITORY DU TIRAGE=========================
     private final RepoTirage repotirage;
 
 
 
 
     @Override
+    //================METHODE PERMETTANT DE FAIRE LE TIRAGE=========================
     public List<Postulant> CreerTirage(@RequestBody Tirage tirage, List<Postulant> listAtrier, Long nbre) {
         Random rand = new Random();
         List<Postulant> list = new ArrayList<>();
@@ -35,17 +39,13 @@ public class TirageImpl implements TirageService{
     }
 
     @Override
+    //================METHODE PERMETTANT DE TROUVER LE TIRAGE PAR LIBELLE=========================
     public  Tirage trouverTirageParlibelle(String libelle) {
-
         return repotirage.findByLibelle(libelle);
     }
 
-    /*@Override
-    public Tirage trouverTirageParnombre(Long nombre) {
-        return repotirage.findByNombre(nombre);
-    }*/
-
     @Override
+    //================METHODE PERMETTANT DE MODIFIER UN TIRAGE=========================
     public Tirage modifierTirage(Long idTirage, Tirage tirage) {
         return repotirage.findById(idTirage)
                 .map(p->{
@@ -56,13 +56,9 @@ public class TirageImpl implements TirageService{
                 }).orElseThrow(() -> new RuntimeException("Tirage non trouvé !"));
     }
 
-    /*@Override
-    public Iterable<Object[]> TirageSelection() {
-        return repotirage.TirageSelection();
+    @Override
+    public List<Tirage> nombretirage() {
+        return repotirage.nombretirage();
     }
 
-    @Override
-    public List<Tirage> findAllTirage() {
-        return null;
-    }*/
 }

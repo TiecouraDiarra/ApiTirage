@@ -10,11 +10,14 @@ public interface TirageService {
     /*Iterable<Object[]> TirageSelection();
     public List<Tirage> findAllTirage();*/
 
+    //================METHODE PERMETTANT DE FAIRE LE TIRAGE=========================
     List<Postulant> CreerTirage(Tirage tirage, List<Postulant> listAtrier, Long nbre);
 
+    //================METHODE PERMETTANT DE TROUVER LE TIRAGE PAR LIBELLE=========================
   Tirage trouverTirageParlibelle(String libelle);
 
-  //Tirage trouverTirageParnombre(Long nombre);
-
+    //================METHODE PERMETTANT DE MODIFIER UN TIRAGE=========================
     Tirage modifierTirage(Long idTirage, Tirage tirage);
+
+    List<Tirage> nombretirage();
 }

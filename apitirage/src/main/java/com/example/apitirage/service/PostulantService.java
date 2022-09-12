@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface PostulantService {
+
+    //================METHODE PERMETTANT D'AFFICHER TOUS LES POSTULANTS TIRES=========================
     ArrayList<Postulant> importerFichier(MultipartFile file);
 
     Postulant creerPostulant(Postulant postulant);
 
-    Iterable<Object[]> AfficherTousLesPostulants();
+    List<Postulant>AfficherTousLesPostulants();
     List<Postulant> TrouveridPostList(Long idListe);
 }

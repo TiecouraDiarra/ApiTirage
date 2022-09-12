@@ -1,9 +1,15 @@
 package com.example.apitirage.service;
 
-public interface PostulantTireService {
-    /*Iterable<Object[]> TirageSelection();*/
+import com.example.apitirage.modele.Postulant;
+import com.example.apitirage.modele.PostulantTS;
 
+import java.util.List;
+
+public interface PostulantTireService {
+
+    //================METHODE PERMETTANT DE RECUPERER LES DONNEES DANS LE FICHIER ET LES ENREGISTRER=========================
     int creer(Long idPostulant, String nomPostulant, String prenomPostulant, String numeroPostulant, String emailPostulant, Long id_tirage);
 
-    Iterable<Object[]> AfficherTousLesPostulantsTire();
+    //================METHODE PERMETTANT D'AFFICHER TOUS LES POSTULANTS TIRES=========================
+    List<PostulantTS> AfficherTousLesPostulantsTire();
 }

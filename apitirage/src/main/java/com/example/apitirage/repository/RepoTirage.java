@@ -15,4 +15,8 @@ public interface RepoTirage extends JpaRepository<Tirage, Long> {
     Tirage findByLibelle(String libelle);
     //Tirage findByNombre(Long nombre);
 
+
+    @Query(value = "SELECT COUNT(*) FROM `tirage` WHERE id_liste_postulant = 1", nativeQuery = true)
+    List<Tirage> nombretirage();
+
 }
