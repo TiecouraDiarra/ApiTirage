@@ -57,8 +57,33 @@ public class TirageImpl implements TirageService{
     }
 
     @Override
-    public List<Tirage> nombretirage() {
-        return repotirage.nombretirage();
+    public Long nombreTotaltirage() {
+        return repotirage.nombretirageTotale();
+    }
+
+    @Override
+    public Long nombreTotaltirageListe(Long IdListePostulant) {
+        return repotirage.nombretirageUneListe(IdListePostulant);
+    }
+
+    @Override
+    public Iterable<Object[]> AfficherTousLesTirages(Long idListePostulant) {
+        return repotirage.TousTirage(idListePostulant);
+    }
+
+    @Override
+    public Iterable<Object[]> IdTirageTous(Long idTirage) {
+        return repotirage.IdTousTirage(idTirage);
+    }
+
+    @Override
+    public Long nombrePostulantTire(Long idTirage) {
+        return repotirage.nombrePostulantTire(idTirage);
+    }
+
+    @Override
+    public Tirage RetrouverParId(Long idTirage) {
+        return repotirage.findById(idTirage).get();
     }
 
 }

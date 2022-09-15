@@ -21,6 +21,7 @@ public class Tirage {
     private Long idTirage;
     private Date dateTirage;
     private String libelle;
+    private Long nombrePostTire;
 
     @ManyToOne
     @JoinColumn(name = "id_liste_postulant")

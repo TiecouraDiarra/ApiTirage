@@ -38,4 +38,39 @@ public class ListePostulantImpl implements ListePostulantService {
     public ListePostulant trouverListeParLibelle(String libelle) {
         return repoListePostulant.findByLibelle(libelle);
     }
+
+    @Override
+    public Iterable<Object[]> AfficherToutesListe() {
+        return repoListePostulant.ToutesListe();
+    }
+
+    @Override
+    public Iterable<Object[]> IdListePostulant(Long idListePostulant) {
+        return repoListePostulant.IdListePostulant(idListePostulant);
+    }
+
+    @Override
+    public ListePostulant RetrouverParId(Long idListePostulant) {
+        return repoListePostulant.findById(idListePostulant).get();
+    }
+
+    @Override
+    public Long nombreListeTiree() {
+        return repoListePostulant.nombreListeTiree();
+    }
+
+    /*@Override
+    public int nombreListeTiree() {
+        return repoListePostulant.nombreListeTiree();
+    }*/
+
+    /*@Override
+    public ListePostulant modifier(Long id_liste_postulant) {
+        return repoListePostulant.findById(id_liste_postulant).map(
+                md->{
+                    md.setNombre(repoListePostulant.findById(id_liste_postulant).get().getNombre()+1);
+                    return  repoListePostulant.save(md);
+                }
+        ).orElseThrow(()-> new RuntimeException("la liste de postulant non trouvé"));
+    }*/
 }

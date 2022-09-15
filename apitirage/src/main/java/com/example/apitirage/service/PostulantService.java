@@ -15,4 +15,8 @@ public interface PostulantService {
 
     List<Postulant>AfficherTousLesPostulants();
     List<Postulant> TrouveridPostList(Long idListe);
+
+    Iterable<Object[]> IdTousPostulant(Long idPostulant);
+
+
 }

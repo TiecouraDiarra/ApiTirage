@@ -12,4 +12,6 @@ public interface PostulantTireService {
 
     //================METHODE PERMETTANT D'AFFICHER TOUS LES POSTULANTS TIRES=========================
     List<PostulantTS> AfficherTousLesPostulantsTire();
+
+    Iterable<Object[]> PostulantTireParListe(Long idTirage);
 }

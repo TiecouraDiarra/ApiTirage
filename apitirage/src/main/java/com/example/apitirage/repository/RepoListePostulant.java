@@ -15,4 +15,17 @@ public interface RepoListePostulant extends JpaRepository<ListePostulant, Long> 
     @Transactional
     @Query(value = "SELECT * FROM postulant ORDER BY RAND() LIMIT 5", nativeQuery = true)
     Iterable<Object[]> TirageSelection();*/
+
+    @Query(value = "SELECT * FROM liste_postulant", nativeQuery = true)
+    Iterable<Object[]> ToutesListe();
+
+    @Query(value = "SELECT * FROM `liste_postulant` WHERE liste_postulant.id_liste_postulant = :id_liste_postulant", nativeQuery = true)
+    Iterable<Object[]> IdListePostulant(Long id_liste_postulant);
+
+    /*@Query(value = "SELECT COUNT(*) FROM liste_postulant WHERE liste_postulant.nombre!=0", nativeQuery = true)
+    int nombreListeTiree();*/
+
+    @Query(value = "SELECT COUNT(id_liste_postulant) FROM tirage WHERE tirage.id_liste_postulant!=0", nativeQuery = true)
+    Long nombreListeTiree();
+
 }

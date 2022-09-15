@@ -1,7 +1,9 @@
 package com.example.apitirage.service;
 
 import com.example.apitirage.modele.Postulant;
+import com.example.apitirage.repository.RepoListePostulant;
 import com.example.apitirage.repository.RepoPostulant;
+import com.example.apitirage.repository.RepoPostulantTS;
 import lombok.AllArgsConstructor;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -25,6 +27,7 @@ import java.util.List;
 public class PostulantImpl implements PostulantService{
     @Autowired
     final private RepoPostulant postulantRepository;
+
     @Override
     public ArrayList<Postulant> importerFichier(MultipartFile file) {
 
@@ -116,6 +119,13 @@ public class PostulantImpl implements PostulantService{
 
         return postulantRepository.FINDIDPOSTLIST(idListe);
     }
+
+    @Override
+    public Iterable<Object[]> IdTousPostulant(Long idPostulant) {
+        return postulantRepository.IdTousPostulant(idPostulant);
+    }
+
+
 
 
     /*private final RepoPostulant repoPostulant;

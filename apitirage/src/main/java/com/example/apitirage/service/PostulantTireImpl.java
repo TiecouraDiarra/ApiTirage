@@ -5,6 +5,7 @@ import com.example.apitirage.modele.PostulantTS;
 import com.example.apitirage.repository.RepoPostulantTS;
 import com.example.apitirage.repository.RepoTirage;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,8 @@ import java.util.List;
 public class PostulantTireImpl implements PostulantTireService{
 
     //================LA DEPENDANCE DU REPOSITORY DU POSTULANTS TIRES=========================
-    private final RepoPostulantTS repoPTS;
+    @Autowired
+    private RepoPostulantTS repoPTS;
 
     @Override
     //================METHODE PERMETTANT DE RECUPERER LES DONNEES DANS LE FICHIER ET LES ENREGISTRER=========================
@@ -26,5 +28,11 @@ public class PostulantTireImpl implements PostulantTireService{
     //================METHODE PERMETTANT D'AFFICHER TOUS LES POSTULANTS TIRES=========================
     public List<PostulantTS> AfficherTousLesPostulantsTire() {
         return repoPTS.findAll();
+    }
+
+
+    @Override
+    public Iterable<Object[]> PostulantTireParListe(Long idTiragee) {
+        return repoPTS.RequetteAfficherToutId(idTiragee);
     }
 }

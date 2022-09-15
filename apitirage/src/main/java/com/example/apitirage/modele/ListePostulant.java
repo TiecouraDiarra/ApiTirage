@@ -21,4 +21,6 @@ public class ListePostulant {
     private Long idListePostulant;
     private Date dateListePostulant;
     private String libelle;
+
+
 }

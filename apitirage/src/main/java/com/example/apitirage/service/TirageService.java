@@ -19,5 +19,15 @@ public interface TirageService {
     //================METHODE PERMETTANT DE MODIFIER UN TIRAGE=========================
     Tirage modifierTirage(Long idTirage, Tirage tirage);
 
-    List<Tirage> nombretirage();
+    Long nombreTotaltirage();
+
+    Long nombreTotaltirageListe(Long IdListePostulant);
+
+    Iterable<Object[]> AfficherTousLesTirages(Long idListePostulant);
+
+    Iterable<Object[]> IdTirageTous(Long idTirage);
+
+    Long nombrePostulantTire(Long idTirage);
+
+    Tirage RetrouverParId(Long idTirage);
 }

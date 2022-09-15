@@ -16,7 +16,19 @@ public interface RepoTirage extends JpaRepository<Tirage, Long> {
     //Tirage findByNombre(Long nombre);
 
 
-    @Query(value = "SELECT COUNT(*) FROM `tirage` WHERE id_liste_postulant = 1", nativeQuery = true)
-    List<Tirage> nombretirage();
+    @Query(value = "SELECT COUNT(id_tirage) FROM `tirage`", nativeQuery = true)
+    Long nombretirageTotale();
 
+    @Query(value = "SELECT COUNT(id_liste_postulant) FROM `tirage` WHERE id_liste_postulant =:id_liste_postulant", nativeQuery = true)
+    Long nombretirageUneListe(Long id_liste_postulant);
+
+    @Query(value = "SELECT * FROM `tirage` WHERE tirage.id_liste_postulant = :id_liste_postulant", nativeQuery = true)
+    Iterable<Object[]> TousTirage(Long id_liste_postulant);
+
+
+    @Query(value = "SELECT * FROM `postulantts` WHERE postulantts.id_tirage = :id_tirage", nativeQuery = true)
+    Iterable<Object[]> IdTousTirage(Long id_tirage);
+
+    @Query(value = "SELECT COUNT(id_tirage) FROM `postulantts` WHERE id_tirage =:id_tirage", nativeQuery = true)
+    Long nombrePostulantTire(Long id_tirage);
 }

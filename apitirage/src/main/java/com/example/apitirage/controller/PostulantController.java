@@ -26,6 +26,7 @@ public class PostulantController {
     @PostMapping("/importer/{libelle}")
     public String LireFichier(@Param("file")MultipartFile file, ListePostulant liste, String libelle){
 
+
         if(listePostulantService.trouverListeParLibelle(liste.getLibelle())==null){
             ArrayList<Postulant> importer = postulantService.importerFichier(file);
             liste.setDateListePostulant(new Date());
@@ -51,4 +52,21 @@ public class PostulantController {
 
         return postulantService.AfficherTousLesPostulants();
     }
+
+
+    @GetMapping("/AfficherToutesListe/{idListePostulant}")
+    public Iterable<Object[]> getToutesListe(@PathVariable Long idListePostulant){
+        return postulantService.IdTousPostulant(idListePostulant);
+    }
+
+    @GetMapping("/AfficherToutesListeTiree")
+    public Long getToutesListeTiree(){
+        return listePostulantService.nombreListeTiree();
+    }
+
+    /*@GetMapping("/AfficherToutesListeTiree")
+    public ListePostulant modifier(Long id_liste_postulant){
+        return listePostulantService.modifier(id_liste_postulant);
+    }*/
+
 }

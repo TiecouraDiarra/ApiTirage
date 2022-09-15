@@ -20,4 +20,7 @@ public interface RepoPostulantTS extends JpaRepository<PostulantTS, Long> {
 
     @Query(value = "SELECT * from postulantts", nativeQuery = true)
     Iterable<Object[]> AfficherTousLesPostulantsTire();
+
+    @Query(value = "SELECT * from postulantts where (postulantts.id_tirage=:id_tirage)",nativeQuery = true)
+    Iterable<Object[]> RequetteAfficherToutId(Long id_tirage);
 }
