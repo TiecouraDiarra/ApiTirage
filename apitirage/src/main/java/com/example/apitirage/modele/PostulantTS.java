@@ -25,5 +25,5 @@ public class PostulantTS {
 
    @ManyToOne
    @JoinColumn(name = "id_tirage")
-   private Tirage tirage;
+    Tirage tirage;
 }

@@ -39,7 +39,7 @@ public class TirageController {
         if (TService.trouverTirageParlibelle(tirage.getLibelle())==null){
             ListePostulant liste = listePostulantService.trouverListeParLibelle(libelle);
             List<Postulant> postulant = postulantService.TrouveridPostList(liste.getIdListePostulant());
-
+            listePostulantService.modifier(liste.getIdListePostulant(), liste);
             tirage.setListePostulant(liste);
             tirage.setDateTirage(new Date());
             tirage.setNombrePostTire(nombre);

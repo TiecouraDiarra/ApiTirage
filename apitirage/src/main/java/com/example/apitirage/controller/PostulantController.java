@@ -30,6 +30,7 @@ public class PostulantController {
         if(listePostulantService.trouverListeParLibelle(liste.getLibelle())==null){
             ArrayList<Postulant> importer = postulantService.importerFichier(file);
             liste.setDateListePostulant(new Date());
+            liste.setNombreTirage(0L);
             ListePostulant l = listePostulantService.CreerListe(liste);
 
             for (Postulant p: importer)
@@ -63,6 +64,12 @@ public class PostulantController {
     public Long getToutesListeTiree(){
         return listePostulantService.nombreListeTiree();
     }
+
+    @GetMapping("/AfficherToutesListeNonTiree")
+    public Long getToutesListeNonTiree(){
+        return listePostulantService.nombreListeNonTiree();
+    }
+
 
     /*@GetMapping("/AfficherToutesListeTiree")
     public ListePostulant modifier(Long id_liste_postulant){

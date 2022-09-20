@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "ListePostulant")
@@ -21,6 +23,9 @@ public class ListePostulant {
     private Long idListePostulant;
     private Date dateListePostulant;
     private String libelle;
+    private Long nombreTirage;
 
+    /*@OneToMany(mappedBy = "listePostulant")
+    List<Tirage> tirages = new ArrayList<>();*/
 
 }

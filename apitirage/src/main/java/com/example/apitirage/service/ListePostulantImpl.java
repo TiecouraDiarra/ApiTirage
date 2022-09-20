@@ -59,18 +59,23 @@ public class ListePostulantImpl implements ListePostulantService {
         return repoListePostulant.nombreListeTiree();
     }
 
+    @Override
+    public Long nombreListeNonTiree() {
+        return repoListePostulant.nombreListeNonTiree();
+    }
+
     /*@Override
     public int nombreListeTiree() {
         return repoListePostulant.nombreListeTiree();
     }*/
 
-    /*@Override
-    public ListePostulant modifier(Long id_liste_postulant) {
-        return repoListePostulant.findById(id_liste_postulant).map(
+    @Override
+    public ListePostulant modifier(Long idListePostulant, ListePostulant listePostulant) {
+        return repoListePostulant.findById(idListePostulant).map(
                 md->{
-                    md.setNombre(repoListePostulant.findById(id_liste_postulant).get().getNombre()+1);
+                    md.setNombreTirage(repoListePostulant.findById(idListePostulant).get().getNombreTirage()+1);
                     return  repoListePostulant.save(md);
                 }
         ).orElseThrow(()-> new RuntimeException("la liste de postulant non trouvé"));
-    }*/
+    }
 }

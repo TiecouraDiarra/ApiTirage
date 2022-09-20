@@ -25,7 +25,10 @@ public interface RepoListePostulant extends JpaRepository<ListePostulant, Long> 
     /*@Query(value = "SELECT COUNT(*) FROM liste_postulant WHERE liste_postulant.nombre!=0", nativeQuery = true)
     int nombreListeTiree();*/
 
-    @Query(value = "SELECT COUNT(id_liste_postulant) FROM tirage WHERE tirage.id_liste_postulant!=0", nativeQuery = true)
+    @Query(value = "SELECT COUNT(id_liste_postulant) FROM liste_postulant WHERE liste_postulant.nombre_tirage!=0", nativeQuery = true)
     Long nombreListeTiree();
+
+    @Query(value = "SELECT COUNT(id_liste_postulant) FROM liste_postulant WHERE liste_postulant.nombre_tirage=0", nativeQuery = true)
+    Long nombreListeNonTiree();
 
 }

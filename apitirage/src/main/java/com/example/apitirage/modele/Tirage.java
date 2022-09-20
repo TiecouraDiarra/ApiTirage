@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -25,5 +27,8 @@ public class Tirage {
 
     @ManyToOne
     @JoinColumn(name = "id_liste_postulant")
-    private ListePostulant listePostulant;
+    ListePostulant listePostulant;
+
+    /*@OneToMany(mappedBy = "tirage")
+    List<PostulantTS> postulantTS = new ArrayList<>();*/
 }

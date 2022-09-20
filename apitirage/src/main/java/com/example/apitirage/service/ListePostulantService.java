@@ -24,6 +24,8 @@ public interface ListePostulantService {
 
     Long nombreListeTiree();
 
+    Long nombreListeNonTiree();
 
-    /*ListePostulant modifier(Long id_liste_postulant);*/
+
+    ListePostulant modifier(Long idListePostulant, ListePostulant listePostulant);
 }
